@@ -1,0 +1,5 @@
+c:\proj\SheepConsole\Sheepshead\bin\Debug\Sheepshead.dll
+c:\proj\SheepConsole\Sheepshead\bin\Debug\Sheepshead.pdb
+c:\proj\SheepConsole\Sheepshead\obj\Debug\Sheepshead.csprojResolveAssemblyReference.cache
+c:\proj\SheepConsole\Sheepshead\obj\Debug\Sheepshead.dll
+c:\proj\SheepConsole\Sheepshead\obj\Debug\Sheepshead.pdb

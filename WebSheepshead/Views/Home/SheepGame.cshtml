@@ -1,0 +1,78 @@
+﻿
+@using WebSheepshead.Helpers;   
+@if (Request.IsAuthenticated)
+{
+    int MaxMessage = ChatSession.messages.Count - 1;
+    ChatSession.AddPerson(User.Identity);
+    if ((ChatSession.People.Count > 1) && (ChatSession.People.Count <= 3))
+    {
+        ChatSession.ResetGame();
+    }
+        <div class="jumbotron">
+        <div id='divMsg' style="width:95%;height:300px;background-color:White;overflow-y:scroll;font-size:12px">
+        <table id="tblMsg" cellspacing="0" cellpadding="0"></table></div>
+        <input type="text" style="width:95%" id="txtInput" />
+        <button id="btnPost">Send message</button>
+    </div>
+    <script>
+        var urlBase = '@Url.Content("~/")';
+        maxMessage = @MaxMessage;
+        $(document).ready(function () {
+            checkForMessages();
+         });
+        $('#btnPost').click(function () {
+             sendMessage();
+        });
+        $('#txtInput').keydown(function (e) {
+            if (e.keyCode == 13) {
+                sendMessage();
+            }
+        });
+        $('#txtInput').focus();
+        function checkForMessages()
+         {
+             jQuery.support.cors = true;
+            $.ajax({
+                 url: urlBase + 'api/Values/'+maxMessage,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                     hmmbbq(data);
+                 },
+                error: function (x, y, z) {
+                    alert(JSON.stringify(x) + '\n' + JSON.stringify(y) + '\n' + JSON.stringify(z));
+                 }
+             })
+        }
+         function sendMessage()
+         {
+             jQuery.support.cors = true;
+            $.ajax({
+                 url: urlBase + 'api/Values/' ,
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify($('#txtInput')[0].value),
+                success: function (data) { $('#txtInput')[0].value = ""; }
+            })
+           
+        }
+         function hmmbbq(data)
+         {
+             for (k = 0; k < data.length; k++) {
+                 maxMessage = data[k].MessageNumber;
+                 var msg = data[k].DisplayText;
+                 if (msg == "") msg = "&nbsp;";
+                $('#tblMsg').append("<tr><td>" + msg + "</td></tr>");
+             }
+             if (data.length > 0)
+                 $('#divMsg').scrollTop($('#divMsg')[0].scrollHeight);
+             $('#txtInput').focus();
+             setTimeout(checkForMessages, 1000);
+         }
+    </script>
+    }
+    else
+    {
+        Response.Redirect(Url.Content("~/") + "Account/Login");
+    }

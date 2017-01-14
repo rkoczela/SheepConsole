@@ -1,0 +1,8 @@
+c:\proj\SheepConsole\SheepConsole\bin\Debug\SheepConsole.exe.config
+c:\proj\SheepConsole\SheepConsole\bin\Debug\SheepConsole.exe
+c:\proj\SheepConsole\SheepConsole\bin\Debug\SheepConsole.pdb
+c:\proj\SheepConsole\SheepConsole\obj\Debug\SheepConsole.csprojResolveAssemblyReference.cache
+c:\proj\SheepConsole\SheepConsole\obj\Debug\SheepConsole.exe
+c:\proj\SheepConsole\SheepConsole\obj\Debug\SheepConsole.pdb
+c:\proj\SheepConsole\SheepConsole\bin\Debug\Sheepshead.dll
+c:\proj\SheepConsole\SheepConsole\bin\Debug\Sheepshead.pdb
